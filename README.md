@@ -3,7 +3,13 @@
 Next.js (App Router) + TypeScript admin dashboard built for the SohCahToa
 Holdings frontend assessment. Covers authentication, a live transactions
 table, real-time updates, admin actions, and the security requirements in
-Section 5 of the brief.
+Section 5 of the brief. 
+
+## Login Credentials
+
+Admin - admin@sohcahtoa.test(password: admin1234)
+Analyst - analyst@sohcatoa.test(password: analyst1234)
+
 
 ## Run it
 
@@ -140,7 +146,7 @@ deliberate seam between server and client concerns.
 ### 2.2 — Table features
 
 `components/Table/index.tsx` is a generic, reusable `DataTable<T>` (ported
-from an earlier project's `SofiaTable` pattern: styled-components container,
+from an earlier project's pattern: styled-components container,
 antd `Table` underneath, a shared `EmptyTable` + `ErrorState`, memoized
 pagination/loading config). `components/Transactions/` supplies the
 transaction-specific columns and filters on top of it.
@@ -201,8 +207,8 @@ Implemented as **Server-Sent Events** (`app/api/transactions/stream/route.ts`,
 
 ## SECTION 4 — Admin Actions
 
-Clicking a row opens `TransactionDetailPanel` (`"use client"`, an antd
-`Drawer`), wired via `onRow` on the table.
+Clicking a row opens `TransactionDetailPanel` (`"use client"`, another reusable component
+`antd Drawer`), wired via `onRow` on the table.
 
 - **Mutation:** `PATCH /api/transactions/[id]` (Route Handler, not a Server
   Action, to keep the mutation on the same typed-request/normalized-error
